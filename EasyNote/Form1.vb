@@ -7,7 +7,7 @@ Public Class Form1
     Private HumanOperateChange As Boolean
     Private LanguageIsEn As Boolean
     Private IWR As New IniWR
-
+    Private LastIndex As Int16
     Private Const WidthRem = 25
     Private Const HeightRem = 50
     Private FilePath As String
@@ -15,9 +15,7 @@ Public Class Form1
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim i As Int16
-
-        HumanOperateChange = False
-
+        LastIndex = -1
         FilePath = Application.StartupPath & "\Personal.ini"
 
         CN_String(0) = "紧急且重要"
@@ -31,9 +29,11 @@ Public Class Form1
         EN_String(3) = "Neither Important Nor Emergency"
 
         CmbSelect.Items.Clear()
+
         For i = 0 To 3
             CmbSelect.Items.Add(EN_String(i))
         Next i
+
         CmbSelect.SelectedIndex = 0
         'LanguageIsEn = True
         Me.MinimizeBox = False
@@ -42,11 +42,11 @@ Public Class Form1
     End Sub
 
     Private Sub CmbSelect_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmbSelect.SelectedIndexChanged
-        HumanOperateChange = True
         Dim ReadStr As String
+        SaveFile()
         ReadStr = IWR.GetINI("Text", "LOG" & CStr(CmbSelect.SelectedIndex), "", FilePath)
         EvText.Text = Replace(ReadStr, Chr(23), vbCrLf)
-        HumanOperateChange = False
+        LastIndex = CmbSelect.SelectedIndex
     End Sub
 
     Private Sub ToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem1.Click
@@ -58,6 +58,7 @@ Public Class Form1
     End Sub
 
     Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
+        SaveFile()
         UpdateSettings()
         End
     End Sub
@@ -69,8 +70,21 @@ Public Class Form1
     End Sub
 
     Private Sub ClearThisToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ClearThisToolStripMenuItem.Click
-        If MsgBox("Are you sure to clear this textbox?", vbYesNo) = MsgBoxResult.Yes Then
+        Dim MessageText, MessageTitle As String
+        Dim i As Int16
+
+        If Not LanguageIsEn Then
+            MessageText = "此操作将清除所有记录！"
+            MessageTitle = "简单笔记"
+        Else
+            MessageText = "This operation will clean all the log"
+            MessageTitle = "Easy Note"
+        End If
+        If MsgBox(MessageText, vbYesNo, MessageTitle) = MsgBoxResult.Yes Then
             EvText.Text = ""
+            For i = 0 To 3
+                IWR.WriteINI("Text", "LOG" & CStr(i), "", FilePath)
+            Next i
         End If
     End Sub
 
@@ -107,7 +121,7 @@ Public Class Form1
         Next i
         CmbSelect.SelectedIndex = NS
         OperateToolStripMenuItem.Text = "操作"
-        ClearThisToolStripMenuItem.Text = "清除此文本框"
+        ClearThisToolStripMenuItem.Text = "清除所有"
         ClearAllToolStripMenuItem.Text = "语言选择"
         ToolStripMenuItem1.Text = "字体"
         ExitToolStripMenuItem.Text = "退出"
@@ -125,7 +139,7 @@ Public Class Form1
         Next i
         CmbSelect.SelectedIndex = NS
         OperateToolStripMenuItem.Text = "Operation"
-        ClearThisToolStripMenuItem.Text = "Clear This"
+        ClearThisToolStripMenuItem.Text = "Clear All"
         ClearAllToolStripMenuItem.Text = "Language"
         ToolStripMenuItem1.Text = "Font"
         ExitToolStripMenuItem.Text = "Exit"
@@ -210,12 +224,16 @@ Public Class Form1
         End If
     End Function
 
-
-    Private Sub EvText_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EvText.TextChanged
-        If Not HumanOperateChange Then
-            Dim WriteStr As String
+    Private Sub SaveFile()
+        Dim WriteStr As String
+        If LastIndex >= 0 Then
             WriteStr = Replace(EvText.Text, vbCrLf, Chr(23))
-            IWR.WriteINI("Text", "LOG" & CStr(CmbSelect.SelectedIndex), WriteStr, FilePath)
+            IWR.WriteINI("Text", "LOG" & CStr(LastIndex), WriteStr, FilePath)
         End If
+    End Sub
+
+    Private Sub Form1_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+        SaveFile()
+        UpdateSettings()
     End Sub
 End Class

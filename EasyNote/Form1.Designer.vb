@@ -22,6 +22,7 @@ Partial Class Form1
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.CmbSelect = New System.Windows.Forms.ComboBox()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.OperateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -35,6 +36,7 @@ Partial Class Form1
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FontDlg = New System.Windows.Forms.FontDialog()
         Me.EvText = New System.Windows.Forms.TextBox()
+        Me.TmrSaver = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -73,7 +75,7 @@ Partial Class Form1
         '
         Me.ClearThisToolStripMenuItem.Name = "ClearThisToolStripMenuItem"
         Me.ClearThisToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
-        Me.ClearThisToolStripMenuItem.Text = "Clear This"
+        Me.ClearThisToolStripMenuItem.Text = "Clear All"
         '
         'ClearAllToolStripMenuItem
         '
@@ -124,8 +126,13 @@ Partial Class Form1
         Me.EvText.Location = New System.Drawing.Point(5, 61)
         Me.EvText.Multiline = True
         Me.EvText.Name = "EvText"
+        Me.EvText.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
         Me.EvText.Size = New System.Drawing.Size(385, 290)
         Me.EvText.TabIndex = 4
+        '
+        'TmrSaver
+        '
+        Me.TmrSaver.Interval = 3000
         '
         'Form1
         '
@@ -159,5 +166,6 @@ Partial Class Form1
     Friend WithEvents ChineseToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents KeepFrontMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EvText As System.Windows.Forms.TextBox
+    Friend WithEvents TmrSaver As System.Windows.Forms.Timer
 
 End Class
