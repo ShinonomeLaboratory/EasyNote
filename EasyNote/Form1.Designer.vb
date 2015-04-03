@@ -37,6 +37,7 @@ Partial Class Form1
         Me.FontDlg = New System.Windows.Forms.FontDialog()
         Me.EvText = New System.Windows.Forms.TextBox()
         Me.TmrSaver = New System.Windows.Forms.Timer(Me.components)
+        Me.PreviewAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -51,7 +52,7 @@ Partial Class Form1
         Me.CmbSelect.ItemHeight = 20
         Me.CmbSelect.Location = New System.Drawing.Point(5, 27)
         Me.CmbSelect.Name = "CmbSelect"
-        Me.CmbSelect.Size = New System.Drawing.Size(385, 28)
+        Me.CmbSelect.Size = New System.Drawing.Size(500, 28)
         Me.CmbSelect.TabIndex = 1
         '
         'MenuStrip1
@@ -59,13 +60,13 @@ Partial Class Form1
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OperateToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(679, 26)
+        Me.MenuStrip1.Size = New System.Drawing.Size(511, 26)
         Me.MenuStrip1.TabIndex = 3
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         'OperateToolStripMenuItem
         '
-        Me.OperateToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ClearThisToolStripMenuItem, Me.ClearAllToolStripMenuItem, Me.KeepFrontMenuItem, Me.HideToolToolStripMenuItem, Me.ToolStripMenuItem1, Me.ExitToolStripMenuItem})
+        Me.OperateToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PreviewAllToolStripMenuItem, Me.ClearThisToolStripMenuItem, Me.ClearAllToolStripMenuItem, Me.KeepFrontMenuItem, Me.HideToolToolStripMenuItem, Me.ToolStripMenuItem1, Me.ExitToolStripMenuItem})
         Me.OperateToolStripMenuItem.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.OperateToolStripMenuItem.Name = "OperateToolStripMenuItem"
         Me.OperateToolStripMenuItem.Size = New System.Drawing.Size(88, 22)
@@ -132,14 +133,21 @@ Partial Class Form1
         '
         'TmrSaver
         '
-        Me.TmrSaver.Interval = 3000
+        Me.TmrSaver.Enabled = True
+        Me.TmrSaver.Interval = 1000
+        '
+        'PreviewAllToolStripMenuItem
+        '
+        Me.PreviewAllToolStripMenuItem.Name = "PreviewAllToolStripMenuItem"
+        Me.PreviewAllToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.PreviewAllToolStripMenuItem.Text = "PreviewAll"
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CausesValidation = False
-        Me.ClientSize = New System.Drawing.Size(679, 363)
+        Me.ClientSize = New System.Drawing.Size(511, 363)
         Me.Controls.Add(Me.EvText)
         Me.Controls.Add(Me.CmbSelect)
         Me.Controls.Add(Me.MenuStrip1)
@@ -167,5 +175,6 @@ Partial Class Form1
     Friend WithEvents KeepFrontMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EvText As System.Windows.Forms.TextBox
     Friend WithEvents TmrSaver As System.Windows.Forms.Timer
+    Friend WithEvents PreviewAllToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

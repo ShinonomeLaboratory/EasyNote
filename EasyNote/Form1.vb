@@ -8,6 +8,8 @@ Public Class Form1
     Private LanguageIsEn As Boolean
     Private IWR As New IniWR
     Private LastIndex As Int16
+    Private FreeTime As Int16
+
     Private Const WidthRem = 25
     Private Const HeightRem = 50
     Private FilePath As String
@@ -17,7 +19,7 @@ Public Class Form1
         Dim i As Int16
         LastIndex = -1
         FilePath = Application.StartupPath & "\Personal.ini"
-
+        FreeTime = 5
         CN_String(0) = "紧急且重要"
         CN_String(1) = "紧急不重要"
         CN_String(2) = "重要不紧急"
@@ -36,9 +38,8 @@ Public Class Form1
 
         CmbSelect.SelectedIndex = 0
         'LanguageIsEn = True
-        Me.MinimizeBox = False
-
         ReadSettings()
+        Me.MinimizeBox = Me.ShowInTaskbar
     End Sub
 
     Private Sub CmbSelect_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmbSelect.SelectedIndexChanged
@@ -65,6 +66,7 @@ Public Class Form1
 
     Private Sub HideToolToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HideToolToolStripMenuItem.Click
         Me.ShowInTaskbar = Not Me.ShowInTaskbar
+        Me.MinimizeBox = Me.ShowInTaskbar
         Execute_Rules()
         UpdateSettings()
     End Sub
@@ -125,6 +127,7 @@ Public Class Form1
         ClearAllToolStripMenuItem.Text = "语言选择"
         ToolStripMenuItem1.Text = "字体"
         ExitToolStripMenuItem.Text = "退出"
+        PreviewAllToolStripMenuItem.Text = "预览所有"
         Execute_Rules()
         Me.Text = "简单笔记"
     End Sub
@@ -143,6 +146,7 @@ Public Class Form1
         ClearAllToolStripMenuItem.Text = "Language"
         ToolStripMenuItem1.Text = "Font"
         ExitToolStripMenuItem.Text = "Exit"
+        PreviewAllToolStripMenuItem.Text = "Preview All"
         Execute_Rules()
         Me.Text = "Easy Note"
     End Sub
@@ -235,5 +239,46 @@ Public Class Form1
     Private Sub Form1_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
         SaveFile()
         UpdateSettings()
+    End Sub
+
+    Private Sub TmrSaver_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TmrSaver.Tick
+        If FreeTime > 0 Then
+            FreeTime = FreeTime - 1
+        End If
+        If FreeTime = 1 Then
+            SaveFile()
+        End If
+    End Sub
+
+    Private Sub PreviewAllToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PreviewAllToolStripMenuItem.Click
+        Dim i As Int16
+        Dim StringShow As String
+
+        StringShow = ""
+
+        For i = 0 To 3
+            If LanguageIsEn Then
+                StringShow = StringShow & EN_String(i) & vbCrLf
+            Else
+                StringShow = StringShow & CN_String(i) & vbCrLf
+            End If
+            StringShow = StringShow & IWR.GetINI("Text", "LOG" & CStr(i), "", FilePath) & vbCrLf & vbCrLf
+        Next i
+
+        Me.Hide()
+        PreView.Show()
+        PreView.TxtShow.Font = Me.EvText.Font
+        PreView.TxtShow.Text = Replace(StringShow, Chr(23), vbCrLf)
+
+        If LanguageIsEn Then
+            PreView.Text = "Preview All"
+        Else
+            PreView.Text = "预览所有"
+        End If
+
+    End Sub
+
+    Private Sub EvText_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EvText.TextChanged
+        FreeTime = 7
     End Sub
 End Class
