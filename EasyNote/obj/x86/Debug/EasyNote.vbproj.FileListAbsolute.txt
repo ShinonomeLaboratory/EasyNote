@@ -9,3 +9,14 @@ C:\Users\TsingJyujing\Documents\Visual Studio 2010\Projects\EasyNote\EasyNote\ob
 C:\Users\TsingJyujing\Documents\Visual Studio 2010\Projects\EasyNote\EasyNote\obj\x86\Debug\EasyNote.pdb
 C:\Users\TsingJyujing\Documents\Visual Studio 2010\Projects\EasyNote\EasyNote\bin\Debug\EasyNote.exe.config
 C:\Users\TsingJyujing\Documents\Visual Studio 2010\Projects\EasyNote\EasyNote\obj\x86\Debug\EasyNote.PreView.resources
+C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\bin\Debug\EasyNote.exe.config
+C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\obj\x86\Debug\EasyNote.exe
+C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\obj\x86\Debug\EasyNote.xml
+C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\obj\x86\Debug\EasyNote.pdb
+C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\bin\Debug\EasyNote.exe
+C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\bin\Debug\EasyNote.pdb
+C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\bin\Debug\EasyNote.xml
+C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\obj\x86\Debug\EasyNote.Form1.resources
+C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\obj\x86\Debug\EasyNote.Resources.resources
+C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\obj\x86\Debug\EasyNote.PreView.resources
+C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\obj\x86\Debug\EasyNote.vbproj.GenerateResource.Cache

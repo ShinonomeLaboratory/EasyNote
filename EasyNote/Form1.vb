@@ -19,7 +19,7 @@ Public Class Form1
         Dim i As Int16
         LastIndex = -1
         FilePath = Application.StartupPath & "\Personal.ini"
-        FreeTime = 5
+        FreeTime = 3
         CN_String(0) = "紧急且重要"
         CN_String(1) = "紧急不重要"
         CN_String(2) = "重要不紧急"
@@ -244,6 +244,8 @@ Public Class Form1
     Private Sub TmrSaver_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TmrSaver.Tick
         If FreeTime > 0 Then
             FreeTime = FreeTime - 1
+        Else
+            TmrSaver.Enabled = False
         End If
         If FreeTime = 1 Then
             SaveFile()
@@ -279,6 +281,7 @@ Public Class Form1
     End Sub
 
     Private Sub EvText_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EvText.TextChanged
-        FreeTime = 7
+        FreeTime = 3
+        TmrSaver.Enabled = True
     End Sub
 End Class
