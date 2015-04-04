@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
   <asmv1:assemblyIdentity name="EasyNote.exe" version="2.6.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
-  <description asmv2:iconFile="ICON.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <description asmv2:iconFile="图标\ICON_128.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
     <assemblyIdentity name="EasyNote" version="2.6.0.0" language="neutral" processorArchitecture="x86" />
@@ -53,14 +53,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EasyNote.exe" size="58880">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EasyNote.exe" size="166912">
       <assemblyIdentity name="EasyNote" version="2.6.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>ZZkWj6nF0CQp+W7UYVgdzXgs+Gw=</dsig:DigestValue>
+        <dsig:DigestValue>LBTKqvFEuSAqgJlW8qvC8yNMAFo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -73,13 +73,40 @@
       <dsig:DigestValue>kIaR0G8UNkQ2pD83i+hy5zEtanY=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="ICON.ico" size="7358">
+  <file name="图标\ICON_128.ico" size="96230">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>ih3ziGygXqBADsEjQYwSpZpG/og=</dsig:DigestValue>
+      <dsig:DigestValue>VgGNguoEGYVShO+89rm7o70MfPU=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="图标\ICON_32.ico" size="4286">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>f3l/XrbqGaRtw+m1Wm6G1OWdV/o=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="图标\ICON_64.ico" size="16958">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>bDexJ7GDEKHCBDv+biB+9w0Ueew=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="图标\ICON_96.ico" size="28862">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>3AzkA+AUgBDHhu0n8Hc9nF7Nt1s=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

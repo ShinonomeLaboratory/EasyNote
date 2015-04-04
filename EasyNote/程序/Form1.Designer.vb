@@ -53,7 +53,7 @@ Partial Class Form1
         Me.CmbSelect.ItemHeight = 20
         Me.CmbSelect.Location = New System.Drawing.Point(5, 27)
         Me.CmbSelect.Name = "CmbSelect"
-        Me.CmbSelect.Size = New System.Drawing.Size(500, 28)
+        Me.CmbSelect.Size = New System.Drawing.Size(385, 28)
         Me.CmbSelect.TabIndex = 1
         '
         'MenuStrip1
@@ -61,7 +61,7 @@ Partial Class Form1
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OperateToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(511, 26)
+        Me.MenuStrip1.Size = New System.Drawing.Size(396, 26)
         Me.MenuStrip1.TabIndex = 3
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -130,6 +130,7 @@ Partial Class Form1
         '
         'EvText
         '
+        Me.EvText.AllowDrop = True
         Me.EvText.Font = New System.Drawing.Font("微软雅黑", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.EvText.Location = New System.Drawing.Point(5, 61)
         Me.EvText.Multiline = True
@@ -148,7 +149,7 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CausesValidation = False
-        Me.ClientSize = New System.Drawing.Size(511, 363)
+        Me.ClientSize = New System.Drawing.Size(396, 363)
         Me.Controls.Add(Me.EvText)
         Me.Controls.Add(Me.CmbSelect)
         Me.Controls.Add(Me.MenuStrip1)
