@@ -8,7 +8,7 @@ Public Class IniWR
     '定义读取配置文件函数
 
     Public Function GetINI(ByVal Section As String, ByVal AppName As String, ByVal lpDefault As String, ByVal FileName As String) As String
-        Dim Str As String = LSet(Str, 256)
+        Dim Str As String = LSet(Str, 16384)
         GetPrivateProfileString(Section, AppName, lpDefault, Str, Len(Str), FileName)
         Return Microsoft.VisualBasic.Left(Str, InStr(Str, Chr(0)) - 1)
     End Function

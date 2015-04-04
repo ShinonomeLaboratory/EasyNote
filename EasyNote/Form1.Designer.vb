@@ -26,6 +26,7 @@ Partial Class Form1
         Me.CmbSelect = New System.Windows.Forms.ComboBox()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.OperateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PreviewAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClearThisToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClearAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EnglishToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -37,7 +38,6 @@ Partial Class Form1
         Me.FontDlg = New System.Windows.Forms.FontDialog()
         Me.EvText = New System.Windows.Forms.TextBox()
         Me.TmrSaver = New System.Windows.Forms.Timer(Me.components)
-        Me.PreviewAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -71,6 +71,12 @@ Partial Class Form1
         Me.OperateToolStripMenuItem.Name = "OperateToolStripMenuItem"
         Me.OperateToolStripMenuItem.Size = New System.Drawing.Size(88, 22)
         Me.OperateToolStripMenuItem.Text = "Operation"
+        '
+        'PreviewAllToolStripMenuItem
+        '
+        Me.PreviewAllToolStripMenuItem.Name = "PreviewAllToolStripMenuItem"
+        Me.PreviewAllToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.PreviewAllToolStripMenuItem.Text = "PreviewAll"
         '
         'ClearThisToolStripMenuItem
         '
@@ -135,12 +141,6 @@ Partial Class Form1
         '
         Me.TmrSaver.Enabled = True
         Me.TmrSaver.Interval = 1000
-        '
-        'PreviewAllToolStripMenuItem
-        '
-        Me.PreviewAllToolStripMenuItem.Name = "PreviewAllToolStripMenuItem"
-        Me.PreviewAllToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
-        Me.PreviewAllToolStripMenuItem.Text = "PreviewAll"
         '
         'Form1
         '

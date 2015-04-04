@@ -6,17 +6,19 @@ Public Class Form1
     Private EN_String(0 To 3) As String
     Private HumanOperateChange As Boolean
     Private LanguageIsEn As Boolean
-    Private IWR As New IniWR
+    Public IWR As New IniWR
     Private LastIndex As Int16
     Private FreeTime As Int16
 
     Private Const WidthRem = 25
     Private Const HeightRem = 50
-    Private FilePath As String
+    Public FilePath As String
 
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Dim i As Int16
+        Dim meleft, metop, meheight, mewidth As Integer
+
         LastIndex = -1
         FilePath = Application.StartupPath & "\Personal.ini"
         FreeTime = 3
@@ -40,6 +42,28 @@ Public Class Form1
         'LanguageIsEn = True
         ReadSettings()
         Me.MinimizeBox = Me.ShowInTaskbar
+
+        metop = IWR.GetINI("Size", "Top", CStr(Me.Top), FilePath)
+        meleft = IWR.GetINI("Size", "Left", CStr(Me.Left), FilePath)
+        mewidth = IWR.GetINI("Size", "Width", CStr(Me.Width), FilePath)
+        meheight = IWR.GetINI("Size", "Height", CStr(Me.Height), FilePath)
+
+        Me.Top = metop
+        Me.Left = meleft
+        Me.Width = mewidth
+        Me.Height = meheight
+        AutoResizeAX()
+    End Sub
+
+    Private Sub Form1_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Resize
+        AutoResizeAX()
+    End Sub
+
+    Private Sub Form1_ResizeEnd(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.ResizeEnd
+        IWR.WriteINI("Size", "Width", CStr(Me.Width), FilePath)
+        IWR.WriteINI("Size", "Height", CStr(Me.Height), FilePath)
+        IWR.WriteINI("Size", "Top", CStr(Me.Top), FilePath)
+        IWR.WriteINI("Size", "Left", CStr(Me.Left), FilePath)
     End Sub
 
     Private Sub CmbSelect_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmbSelect.SelectedIndexChanged
@@ -98,13 +122,6 @@ Public Class Form1
     Private Sub ChineseToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChineseToolStripMenuItem.Click
         Language_as_Chinese()
         UpdateSettings()
-    End Sub
-
-    Private Sub Form1_Resize(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Resize
-
-        CmbSelect.Width = Me.Width - WidthRem
-        EvText.Width = Me.Width - WidthRem
-        EvText.Height = Me.Height - (CmbSelect.Top + CmbSelect.Height + HeightRem)
     End Sub
 
     Private Sub KeepFrontMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles KeepFrontMenuItem.Click
@@ -280,8 +297,17 @@ Public Class Form1
 
     End Sub
 
+
     Private Sub EvText_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EvText.TextChanged
         FreeTime = 3
         TmrSaver.Enabled = True
     End Sub
+
+    Private Sub AutoResizeAX()
+        CmbSelect.Width = Me.Width - WidthRem
+        EvText.Width = Me.Width - WidthRem
+        EvText.Height = Me.Height - (CmbSelect.Top + CmbSelect.Height + HeightRem)
+    End Sub
+
+
 End Class

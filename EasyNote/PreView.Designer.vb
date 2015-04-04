@@ -39,7 +39,7 @@ Partial Class PreView
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(564, 305)
+        Me.ClientSize = New System.Drawing.Size(449, 417)
         Me.Controls.Add(Me.TxtShow)
         Me.Name = "PreView"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
