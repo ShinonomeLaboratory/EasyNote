@@ -20,3 +20,7 @@ C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\obj\x86\Debug\EasyNote.
 C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\obj\x86\Debug\EasyNote.Resources.resources
 C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\obj\x86\Debug\EasyNote.PreView.resources
 C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\obj\x86\Debug\EasyNote.vbproj.GenerateResource.Cache
+C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\bin\Debug\EasyNote.exe.manifest
+C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\bin\Debug\EasyNote.application
+C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\obj\x86\Debug\EasyNote.exe.manifest
+C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\obj\x86\Debug\EasyNote.application

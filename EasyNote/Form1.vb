@@ -53,6 +53,11 @@ Public Class Form1
         Me.Width = mewidth
         Me.Height = meheight
         AutoResizeAX()
+
+        If UBound(Diagnostics.Process.GetProcessesByName(Diagnostics.Process.GetCurrentProcess.ProcessName)) > 0 Then
+            End
+        End If
+
     End Sub
 
     Private Sub Form1_Resize(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Resize

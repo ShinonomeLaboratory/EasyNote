@@ -22,6 +22,7 @@ Partial Class PreView
     '不要使用代码编辑器修改它。
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PreView))
         Me.TxtShow = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
@@ -41,6 +42,7 @@ Partial Class PreView
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(449, 417)
         Me.Controls.Add(Me.TxtShow)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "PreView"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "PreView"
