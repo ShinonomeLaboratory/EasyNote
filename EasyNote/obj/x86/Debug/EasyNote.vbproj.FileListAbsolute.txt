@@ -24,3 +24,7 @@ C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\bin\Debug\EasyNote.exe.
 C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\bin\Debug\EasyNote.application
 C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\obj\x86\Debug\EasyNote.exe.manifest
 C:\Users\TsingJyujing\Documents\GitHub\EasyNote\EasyNote\obj\x86\Debug\EasyNote.application
+F:\EasyNote_Git\trunk\EasyNote\bin\Debug\EasyNote.exe.config
+F:\EasyNote_Git\trunk\EasyNote\obj\x86\Debug\EasyNote.exe
+F:\EasyNote_Git\trunk\EasyNote\obj\x86\Debug\EasyNote.xml
+F:\EasyNote_Git\trunk\EasyNote\obj\x86\Debug\EasyNote.pdb
