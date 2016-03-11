@@ -28,3 +28,7 @@ F:\EasyNote_Git\trunk\EasyNote\bin\Debug\EasyNote.exe.config
 F:\EasyNote_Git\trunk\EasyNote\obj\x86\Debug\EasyNote.exe
 F:\EasyNote_Git\trunk\EasyNote\obj\x86\Debug\EasyNote.xml
 F:\EasyNote_Git\trunk\EasyNote\obj\x86\Debug\EasyNote.pdb
+F:\EasyNote_Git\trunk\EasyNote\obj\x86\Debug\EasyNote.Form1.resources
+F:\EasyNote_Git\trunk\EasyNote\obj\x86\Debug\EasyNote.Resources.resources
+F:\EasyNote_Git\trunk\EasyNote\obj\x86\Debug\EasyNote.PreView.resources
+F:\EasyNote_Git\trunk\EasyNote\obj\x86\Debug\EasyNote.vbproj.GenerateResource.Cache

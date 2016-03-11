@@ -32,6 +32,7 @@ Partial Class Form1
         Me.ClearAllToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EnglishToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ChineseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.JapaneseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.KeepFrontMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HideToolToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -45,8 +46,8 @@ Partial Class Form1
         'CmbSelect
         '
         Me.CmbSelect.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CmbSelect.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CmbSelect.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.CmbSelect.FormattingEnabled = True
@@ -61,7 +62,7 @@ Partial Class Form1
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OperateToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(396, 26)
+        Me.MenuStrip1.Size = New System.Drawing.Size(396, 28)
         Me.MenuStrip1.TabIndex = 3
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -70,62 +71,68 @@ Partial Class Form1
         Me.OperateToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PreviewAllToolStripMenuItem, Me.ClearThisToolStripMenuItem, Me.ClearAllToolStripMenuItem, Me.KeepFrontMenuItem, Me.HideToolToolStripMenuItem, Me.ToolStripMenuItem1, Me.ExitToolStripMenuItem})
         Me.OperateToolStripMenuItem.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.5!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.OperateToolStripMenuItem.Name = "OperateToolStripMenuItem"
-        Me.OperateToolStripMenuItem.Size = New System.Drawing.Size(88, 22)
+        Me.OperateToolStripMenuItem.Size = New System.Drawing.Size(89, 24)
         Me.OperateToolStripMenuItem.Text = "Operation"
         '
         'PreviewAllToolStripMenuItem
         '
         Me.PreviewAllToolStripMenuItem.Name = "PreviewAllToolStripMenuItem"
-        Me.PreviewAllToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.PreviewAllToolStripMenuItem.Size = New System.Drawing.Size(183, 24)
         Me.PreviewAllToolStripMenuItem.Text = "PreviewAll"
         '
         'ClearThisToolStripMenuItem
         '
         Me.ClearThisToolStripMenuItem.Name = "ClearThisToolStripMenuItem"
-        Me.ClearThisToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.ClearThisToolStripMenuItem.Size = New System.Drawing.Size(183, 24)
         Me.ClearThisToolStripMenuItem.Text = "Clear All"
         '
         'ClearAllToolStripMenuItem
         '
-        Me.ClearAllToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EnglishToolStripMenuItem, Me.ChineseToolStripMenuItem})
+        Me.ClearAllToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EnglishToolStripMenuItem, Me.ChineseToolStripMenuItem, Me.JapaneseToolStripMenuItem})
         Me.ClearAllToolStripMenuItem.Name = "ClearAllToolStripMenuItem"
-        Me.ClearAllToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.ClearAllToolStripMenuItem.Size = New System.Drawing.Size(183, 24)
         Me.ClearAllToolStripMenuItem.Text = "Language"
         '
         'EnglishToolStripMenuItem
         '
         Me.EnglishToolStripMenuItem.Name = "EnglishToolStripMenuItem"
-        Me.EnglishToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
+        Me.EnglishToolStripMenuItem.Size = New System.Drawing.Size(152, 24)
         Me.EnglishToolStripMenuItem.Text = "English"
         '
         'ChineseToolStripMenuItem
         '
         Me.ChineseToolStripMenuItem.Name = "ChineseToolStripMenuItem"
-        Me.ChineseToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
+        Me.ChineseToolStripMenuItem.Size = New System.Drawing.Size(152, 24)
         Me.ChineseToolStripMenuItem.Text = "简体中文"
+        '
+        'JapaneseToolStripMenuItem
+        '
+        Me.JapaneseToolStripMenuItem.Name = "JapaneseToolStripMenuItem"
+        Me.JapaneseToolStripMenuItem.Size = New System.Drawing.Size(152, 24)
+        Me.JapaneseToolStripMenuItem.Text = "日本語"
         '
         'KeepFrontMenuItem
         '
         Me.KeepFrontMenuItem.Name = "KeepFrontMenuItem"
-        Me.KeepFrontMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.KeepFrontMenuItem.Size = New System.Drawing.Size(183, 24)
         Me.KeepFrontMenuItem.Text = "Keep Front"
         '
         'HideToolToolStripMenuItem
         '
         Me.HideToolToolStripMenuItem.Name = "HideToolToolStripMenuItem"
-        Me.HideToolToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.HideToolToolStripMenuItem.Size = New System.Drawing.Size(183, 24)
         Me.HideToolToolStripMenuItem.Text = "Hide in Taskbar"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(181, 22)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(183, 24)
         Me.ToolStripMenuItem1.Text = "Font"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(181, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(183, 24)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'EvText
@@ -179,5 +186,6 @@ Partial Class Form1
     Friend WithEvents EvText As System.Windows.Forms.TextBox
     Friend WithEvents TmrSaver As System.Windows.Forms.Timer
     Friend WithEvents PreviewAllToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents JapaneseToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

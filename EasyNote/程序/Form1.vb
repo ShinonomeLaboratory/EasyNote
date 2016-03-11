@@ -4,8 +4,15 @@ Public Class Form1
 
     Private CN_String(0 To 3) As String
     Private EN_String(0 To 3) As String
+    Private JP_String(0 To 3) As String
+
     Private HumanOperateChange As Boolean
-    Private LanguageIsEn As Boolean
+
+    Private UserLanguage As Int16
+    Private Const ul_Chinese = 0
+    Private Const ul_English = 1
+    Private Const ul_Japanese = 2
+
     Public IWR As New IniWR
     Private LastIndex As Int16
     Private FreeTime As Int16
@@ -32,6 +39,10 @@ Public Class Form1
         EN_String(2) = "Important And Not Emergency"
         EN_String(3) = "Neither Important Nor Emergency"
 
+        JP_String(0) = "重要があるばかりでなく、緊急もある"
+        JP_String(1) = "緊急だが重要ではない"
+        JP_String(2) = "重要だが緊急ではない"
+        JP_String(3) = "重要こともないし、緊急こともない"
         CmbSelect.Items.Clear()
 
         For i = 0 To 3
@@ -39,7 +50,7 @@ Public Class Form1
         Next i
 
         CmbSelect.SelectedIndex = 0
-        'LanguageIsEn = True
+        'UserLanguage = True
         ReadSettings()
         Me.MinimizeBox = Me.ShowInTaskbar
 
@@ -104,13 +115,17 @@ Public Class Form1
         Dim MessageText, MessageTitle As String
         Dim i As Int16
 
-        If Not LanguageIsEn Then
-            MessageText = "此操作将清除所有记录！"
+        If UserLanguage = ul_Chinese Then
+            MessageText = "注意！此操作将清除所有记录！"
             MessageTitle = "简单笔记"
-        Else
-            MessageText = "This operation will clean all the log"
+        ElseIf UserLanguage = ul_English Then
+            MessageText = "Warning!This operation will clean all the log!"
             MessageTitle = "Easy Note"
+        Else
+            MessageText = "注意ください！すべての全手帳を削除します！"
+            MessageTitle = "簡単な手帳"
         End If
+
         If MsgBox(MessageText, vbYesNo, MessageTitle) = MsgBoxResult.Yes Then
             EvText.Text = ""
             For i = 0 To 3
@@ -129,6 +144,11 @@ Public Class Form1
         UpdateSettings()
     End Sub
 
+    Private Sub JapaneseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles JapaneseToolStripMenuItem.Click
+        Language_as_Japanese()
+        UpdateSettings()
+    End Sub
+
     Private Sub KeepFrontMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles KeepFrontMenuItem.Click
         Me.TopMost = Not Me.TopMost
         Call Execute_Rules()
@@ -137,7 +157,8 @@ Public Class Form1
 
     Private Sub Language_as_Chinese()
         Dim NS As Int16
-        LanguageIsEn = False
+        UserLanguage = ul_Chinese
+
         NS = CmbSelect.SelectedIndex
         CmbSelect.Items.Clear()
         For i = 0 To 3
@@ -156,7 +177,8 @@ Public Class Form1
 
     Private Sub Language_as_English()
         Dim NS As Int16
-        LanguageIsEn = True
+        UserLanguage = ul_English
+
         NS = CmbSelect.SelectedIndex
         CmbSelect.Items.Clear()
         For i = 0 To 3
@@ -173,35 +195,63 @@ Public Class Form1
         Me.Text = "Easy Note"
     End Sub
 
+    Private Sub Language_as_Japanese()
+        Dim NS As Int16
+        UserLanguage = ul_Japanese
+
+        NS = CmbSelect.SelectedIndex
+        CmbSelect.Items.Clear()
+        For i = 0 To 3
+            CmbSelect.Items.Add(JP_String(i))
+        Next i
+        CmbSelect.SelectedIndex = NS
+        OperateToolStripMenuItem.Text = "操作"
+        ClearThisToolStripMenuItem.Text = "全手帳を削除する"
+        ClearAllToolStripMenuItem.Text = "言語"
+        ToolStripMenuItem1.Text = "字体"
+        ExitToolStripMenuItem.Text = "クローン"
+        PreviewAllToolStripMenuItem.Text = "プレビュー"
+        Execute_Rules()
+        Me.Text = "簡単な手帳"
+    End Sub
+
     Private Sub Execute_Rules()
 
         If Me.ShowInTaskbar = True Then
-            If LanguageIsEn Then
-                HideToolToolStripMenuItem.Text = "Hide in Taskbar"
+            If UserLanguage = ul_Chinese Then
+                HideToolToolStripMenuItem.Text = "在任务栏中隐藏图标"
+            ElseIf UserLanguage = ul_English Then
+                HideToolToolStripMenuItem.Text = "Hide icon in Taskbar"
             Else
-                HideToolToolStripMenuItem.Text = "在任务栏中隐藏"
+                HideToolToolStripMenuItem.Text = "タスクバーのアイコンを隠す"
             End If
 
         Else
-            If LanguageIsEn Then
-                HideToolToolStripMenuItem.Text = "Show in Taskbar"
+
+            If UserLanguage = ul_Chinese Then
+                HideToolToolStripMenuItem.Text = "在任务栏中显示图标"
+            ElseIf UserLanguage = ul_English Then
+                HideToolToolStripMenuItem.Text = "Show icon in Taskbar"
             Else
-                HideToolToolStripMenuItem.Text = "在任务栏中显示"
+                HideToolToolStripMenuItem.Text = "タスクバーのアイコンを表示します"
             End If
         End If
 
         If Me.TopMost = True Then
-            If LanguageIsEn Then
+            If UserLanguage = ul_Chinese Then
+                KeepFrontMenuItem.Text = "取消最前"
+            ElseIf UserLanguage = ul_English Then
                 KeepFrontMenuItem.Text = "Discard Keep Front"
             Else
-                KeepFrontMenuItem.Text = "取消最前"
+                KeepFrontMenuItem.Text = "先頭を取り消す"
             End If
-
         Else
-            If LanguageIsEn Then
+            If UserLanguage = ul_Chinese Then
+                KeepFrontMenuItem.Text = "始终最前"
+            ElseIf UserLanguage = ul_English Then
                 KeepFrontMenuItem.Text = "Keep Front"
             Else
-                KeepFrontMenuItem.Text = "始终最前"
+                KeepFrontMenuItem.Text = "先頭を保持する"
             End If
         End If
 
@@ -210,12 +260,14 @@ Public Class Form1
     Private Sub ReadSettings()
         Dim IWR As New IniWR
 
-        LanguageIsEn = Str2Bool(IWR.GetINI("Sets", "Language", "1", FilePath))
+        UserLanguage = Str2Int(IWR.GetINI("Sets", "Language", "1", FilePath))
 
-        If LanguageIsEn Then
+        If UserLanguage = ul_Chinese Then
+            Language_as_Chinese()
+        ElseIf UserLanguage = ul_English Then
             Language_as_English()
         Else
-            Language_as_Chinese()
+            Language_as_Japanese()
         End If
 
         Me.TopMost = Str2Bool(IWR.GetINI("Sets", "TopMost", "0", FilePath))
@@ -229,7 +281,7 @@ Public Class Form1
     Private Sub UpdateSettings()
         '保存在前，隐藏和语言
 
-        IWR.WriteINI("Sets", "Language", Bool2String(LanguageIsEn), FilePath)
+        IWR.WriteINI("Sets", "Language", Int2String(UserLanguage), FilePath)
         IWR.WriteINI("Sets", "TopMost", Bool2String(Me.TopMost), FilePath)
         IWR.WriteINI("Sets", "ShowInTaskbar", Bool2String(Me.ShowInTaskbar), FilePath)
     End Sub
@@ -248,6 +300,14 @@ Public Class Form1
         Else
             Str2Bool = True
         End If
+    End Function
+
+    Private Function Int2String(ByVal InputVal As Int16) As String
+        Int2String = CStr(InputVal)
+    End Function
+
+    Private Function Str2Int(ByVal InputVal As String) As Int16
+        Str2Int = Val(InputVal)
     End Function
 
     Private Sub SaveFile()
@@ -281,11 +341,14 @@ Public Class Form1
         StringShow = ""
 
         For i = 0 To 3
-            If LanguageIsEn Then
+            If UserLanguage = ul_Chinese Then
+                StringShow = StringShow & CN_String(i) & vbCrLf
+            ElseIf UserLanguage = ul_English Then
                 StringShow = StringShow & EN_String(i) & vbCrLf
             Else
-                StringShow = StringShow & CN_String(i) & vbCrLf
+                StringShow = StringShow & JP_String(i) & vbCrLf
             End If
+
             StringShow = StringShow & IWR.GetINI("Text", "LOG" & CStr(i), "", FilePath) & vbCrLf & vbCrLf
         Next i
 
@@ -294,10 +357,12 @@ Public Class Form1
         PreView.TxtShow.Font = Me.EvText.Font
         PreView.TxtShow.Text = Replace(StringShow, Chr(23), vbCrLf)
 
-        If LanguageIsEn Then
+        If UserLanguage = ul_Chinese Then
+            PreView.Text = "预览所有"
+        ElseIf UserLanguage = ul_English Then
             PreView.Text = "Preview All"
         Else
-            PreView.Text = "预览所有"
+            PreView.Text = "全部をプレビュー"
         End If
 
     End Sub
@@ -313,6 +378,5 @@ Public Class Form1
         EvText.Width = Me.Width - WidthRem
         EvText.Height = Me.Height - (CmbSelect.Top + CmbSelect.Height + HeightRem)
     End Sub
-
 
 End Class
